@@ -25,8 +25,6 @@ window.Absin.LexerRules.Grouper = class Grouper
     c = code.charAt(0)
 
     if c == @opener || c == @closer
-      token = null
-
       token = ["GROUP_OPEN", @opener]  if c == @opener
       token = ["GROUP_CLOSE", @closer] if c == @closer
 
