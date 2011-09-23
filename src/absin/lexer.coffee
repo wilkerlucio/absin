@@ -21,7 +21,12 @@
 class Lexer
   @defaultRules = ->
     [
-      ["grouper", new Absin.LexerRules.Grouper()]
+      ["whitespace", new Absin.LexerRules.Whitespace()]
+      ["list",       new Absin.LexerRules.List()]
+      ["group",      new Absin.LexerRules.Grouper()]
+      ["string",     new Absin.LexerRules.String()]
+      ["regexp",     new Absin.LexerRules.RegExp()]
+      ["specials",   new Absin.LexerRules.Specials()]
       ["identifier", new Absin.LexerRules.Identifier()]
     ]
 
