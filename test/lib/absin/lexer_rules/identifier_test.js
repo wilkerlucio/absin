@@ -18,6 +18,6 @@
   });
   test("extract and return correct char count", function() {
     deepEqual(ident.tokenize("hello", 0), [[5, 0], ["IDENTIFIER", "hello"]]);
-    return deepEqual(ident.tokenize("hi+a(thing)", 1), [[4, 1], ["IDENTIFIER", "hi+a"]]);
+    return deepEqual(ident.tokenize("hi+a(thing)", 1), [[4, 0], ["IDENTIFIER", "hi+a"]]);
   });
 }).call(this);

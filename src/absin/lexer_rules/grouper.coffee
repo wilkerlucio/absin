@@ -30,4 +30,4 @@ window.Absin.LexerRules.Grouper = class Grouper
     token = ["GROUP_OPEN", @opener]  if c == @opener
     token = ["GROUP_CLOSE", @closer] if c == @closer
 
-    [[1, line], token]
+    [[1, 0], token]
