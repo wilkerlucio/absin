@@ -23,6 +23,6 @@ window.Absin.LexerRules.Identifier = class Identifier
 
   isValid: (code) -> !!(code.match @syntax)
 
-  tokenize: (code, line) ->
+  tokenize: (code) ->
     matched = code.match(@syntax)[0]
     [[matched.length, 0], ["IDENTIFIER", matched]]

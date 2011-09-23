@@ -31,7 +31,7 @@ test "return invalid for other chars", ->
   ok !grouper.isValid("'")
 
 test "group opener", ->
-  deepEqual grouper.tokenize("(thing)", 0), [[1, 0], ["GROUP_OPEN", "("]]
+  deepEqual grouper.tokenize("(thing)"), [[1, 0], ["GROUP_OPEN", "("]]
 
 test "group closer", ->
-  deepEqual grouper.tokenize(")thing", 2), [[1, 0], ["GROUP_CLOSE", ")"]]
+  deepEqual grouper.tokenize(")thing"), [[1, 0], ["GROUP_CLOSE", ")"]]

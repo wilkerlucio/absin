@@ -17,7 +17,7 @@
     return ok(!ident.isValid("\rhy"));
   });
   test("extract and return correct char count", function() {
-    deepEqual(ident.tokenize("hello", 0), [[5, 0], ["IDENTIFIER", "hello"]]);
-    return deepEqual(ident.tokenize("hi+a(thing)", 1), [[4, 0], ["IDENTIFIER", "hi+a"]]);
+    deepEqual(ident.tokenize("hello"), [[5, 0], ["IDENTIFIER", "hello"]]);
+    return deepEqual(ident.tokenize("hi+a(thing)"), [[4, 0], ["IDENTIFIER", "hi+a"]]);
   });
 }).call(this);

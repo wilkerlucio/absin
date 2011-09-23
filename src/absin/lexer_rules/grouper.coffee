@@ -23,7 +23,7 @@ window.Absin.LexerRules.Grouper = class Grouper
 
   isValid: (code) -> code == @opener || code == @closer
 
-  tokenize: (code, line) ->
+  tokenize: (code) ->
     c = code.charAt(0)
     token = null
 

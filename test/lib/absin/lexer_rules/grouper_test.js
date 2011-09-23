@@ -11,9 +11,9 @@
     return ok(!grouper.isValid("'"));
   });
   test("group opener", function() {
-    return deepEqual(grouper.tokenize("(thing)", 0), [[1, 0], ["GROUP_OPEN", "("]]);
+    return deepEqual(grouper.tokenize("(thing)"), [[1, 0], ["GROUP_OPEN", "("]]);
   });
   test("group closer", function() {
-    return deepEqual(grouper.tokenize(")thing", 2), [[1, 0], ["GROUP_CLOSE", ")"]]);
+    return deepEqual(grouper.tokenize(")thing"), [[1, 0], ["GROUP_CLOSE", ")"]]);
   });
 }).call(this);
