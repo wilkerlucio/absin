@@ -2,19 +2,13 @@
   var ident;
   module("Lexer Rules Identifier");
   ident = new Absin.LexerRules.Identifier();
-  test("is valid for identifiers", function() {
-    ok(ident.isValid("identifier"));
-    ok(ident.isValid("crazy+ident"));
-    ok(ident.isValid("hello?"));
-    return ok(ident.isValid("+"));
-  });
   test("is not valid for special cases by default", function() {
-    ok(!ident.isValid("(hello)"));
-    ok(!ident.isValid("[list]"));
-    ok(!ident.isValid(" hy"));
-    ok(!ident.isValid("\nhy"));
-    ok(!ident.isValid("\thy"));
-    return ok(!ident.isValid("\rhy"));
+    ok(!ident.tokenize("(hello)"));
+    ok(!ident.tokenize("[list]"));
+    ok(!ident.tokenize(" hy"));
+    ok(!ident.tokenize("\nhy"));
+    ok(!ident.tokenize("\thy"));
+    return ok(!ident.tokenize("\rhy"));
   });
   test("extract and return correct char count", function() {
     deepEqual(ident.tokenize("hello"), [[5, 0], ["IDENTIFIER", "hello"]]);

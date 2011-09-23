@@ -22,10 +22,9 @@ window.Absin.LexerRules.Whitespace = class Whitespace
   constructor: (@matcher = /^(\r\n|\r|\n|\s)+/) ->
     @lineMatcher = /\r\n|\r|\n/
 
-  isValid: (code) -> !!(code.match(@matcher))
-
   tokenize: (code) ->
-    result = code.match(@matcher)[0]
-    lines = result.split(@lineMatcher)
+    if match = code.match(@matcher)
+      result = match[0]
+      lines = result.split(@lineMatcher)
 
-    [[result.length, lines.length - 1], null]
+      [[result.length, lines.length - 1], null]

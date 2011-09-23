@@ -22,15 +22,9 @@ module "Lexer Rules Whitespace"
 
 whitespacer = new Absin.LexerRules.Whitespace()
 
-test "whitespace detection", ->
-  ok whitespacer.isValid("  ")
-  ok whitespacer.isValid("\r\n")
-  ok whitespacer.isValid("\t")
-  ok whitespacer.isValid("\n")
-
 test "whitespace invalid detection", ->
-  ok !whitespacer.isValid("hey")
-  ok !whitespacer.isValid("(  )")
+  ok !whitespacer.tokenize("hey")
+  ok !whitespacer.tokenize("(  )")
 
 test "whitespace parsing", ->
   deepEqual whitespacer.tokenize("  "), [[2, 0], null]

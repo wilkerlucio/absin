@@ -22,19 +22,13 @@ module "Lexer Rules Identifier"
 
 ident = new Absin.LexerRules.Identifier()
 
-test "is valid for identifiers", ->
-  ok ident.isValid("identifier")
-  ok ident.isValid("crazy+ident")
-  ok ident.isValid("hello?")
-  ok ident.isValid("+")
-
 test "is not valid for special cases by default", ->
-  ok !ident.isValid("(hello)")
-  ok !ident.isValid("[list]")
-  ok !ident.isValid(" hy")
-  ok !ident.isValid("\nhy")
-  ok !ident.isValid("\thy")
-  ok !ident.isValid("\rhy")
+  ok !ident.tokenize("(hello)")
+  ok !ident.tokenize("[list]")
+  ok !ident.tokenize(" hy")
+  ok !ident.tokenize("\nhy")
+  ok !ident.tokenize("\thy")
+  ok !ident.tokenize("\rhy")
 
 test "extract and return correct char count", ->
   deepEqual(ident.tokenize("hello"), [[5, 0], ["IDENTIFIER", "hello"]])

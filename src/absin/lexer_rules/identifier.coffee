@@ -21,8 +21,7 @@
 window.Absin.LexerRules.Identifier = class Identifier
   constructor: (@syntax = /^[^\r\n\s\t()[\]]+/) ->
 
-  isValid: (code) -> !!(code.match @syntax)
-
   tokenize: (code) ->
-    matched = code.match(@syntax)[0]
-    [[matched.length, 0], ["IDENTIFIER", matched]]
+    if match = code.match(@syntax)
+      matched = match[0]
+      [[matched.length, 0], ["IDENTIFIER", matched]]

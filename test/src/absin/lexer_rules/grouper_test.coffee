@@ -22,13 +22,9 @@ module "Lexer Rules Grouper"
 
 grouper = new Absin.LexerRules.Grouper()
 
-test "return valid for opener or closer", ->
-  ok grouper.isValid("(")
-  ok grouper.isValid(")")
-
 test "return invalid for other chars", ->
-  ok !grouper.isValid("a")
-  ok !grouper.isValid("'")
+  ok !grouper.tokenize("abc")
+  ok !grouper.tokenize("'")
 
 test "group opener", ->
   deepEqual grouper.tokenize("(thing)"), [[1, 0], ["GROUP_OPEN", "("]]

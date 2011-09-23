@@ -2,15 +2,9 @@
   var whitespacer;
   module("Lexer Rules Whitespace");
   whitespacer = new Absin.LexerRules.Whitespace();
-  test("whitespace detection", function() {
-    ok(whitespacer.isValid("  "));
-    ok(whitespacer.isValid("\r\n"));
-    ok(whitespacer.isValid("\t"));
-    return ok(whitespacer.isValid("\n"));
-  });
   test("whitespace invalid detection", function() {
-    ok(!whitespacer.isValid("hey"));
-    return ok(!whitespacer.isValid("(  )"));
+    ok(!whitespacer.tokenize("hey"));
+    return ok(!whitespacer.tokenize("(  )"));
   });
   test("whitespace parsing", function() {
     deepEqual(whitespacer.tokenize("  "), [[2, 0], null]);
