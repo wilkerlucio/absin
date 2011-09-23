@@ -22,7 +22,7 @@ class Lexer
   @defaultRules = ->
     [
       ["whitespace", new Absin.LexerRules.Whitespace()]
-      ["list",       new Absin.LexerRules.List()]
+      ["list",       new Absin.LexerRules.Grouper("[", "]", "LIST_OPEN", "LIST_CLOSE")]
       ["group",      new Absin.LexerRules.Grouper()]
       ["string",     new Absin.LexerRules.String()]
       ["regexp",     new Absin.LexerRules.RegExp()]

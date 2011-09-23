@@ -24,10 +24,22 @@ grouper = new Absin.LexerRules.Grouper()
 
 test "return invalid for other chars", ->
   ok !grouper.tokenize("abc")
-  ok !grouper.tokenize("'")
+  ok !grouper.tokenize("[]'")
 
 test "group opener", ->
   deepEqual grouper.tokenize("(thing)"), [[1, 0], ["GROUP_OPEN", "("]]
 
 test "group closer", ->
   deepEqual grouper.tokenize(")thing"), [[1, 0], ["GROUP_CLOSE", ")"]]
+
+customGroup = new Absin.LexerRules.Grouper("[", "]", "LIST_OPEN", "LIST_CLOSE")
+
+test "custom return invalid for other chars", ->
+  ok !customGroup.tokenize("abc")
+  ok !customGroup.tokenize("()'")
+
+test "custom group opener", ->
+  deepEqual customGroup.tokenize("[thing]"), [[1, 0], ["LIST_OPEN", "["]]
+
+test "custom group closer", ->
+  deepEqual customGroup.tokenize("]thing"), [[1, 0], ["LIST_CLOSE", "]"]]

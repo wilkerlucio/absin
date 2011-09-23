@@ -19,13 +19,13 @@
 # THE SOFTWARE.
 
 window.Absin.LexerRules.Grouper = class Grouper
-  constructor: (@opener = "(", @closer = ")") ->
+  constructor: (@opener = "(", @closer = ")", @openToken = "GROUP_OPEN", @closeToken = "GROUP_CLOSE") ->
 
   tokenize: (code) ->
     c = code.charAt(0)
 
     if c == @opener || c == @closer
-      token = ["GROUP_OPEN", @opener]  if c == @opener
-      token = ["GROUP_CLOSE", @closer] if c == @closer
+      token = [@openToken,  @opener] if c == @opener
+      token = [@closeToken, @closer] if c == @closer
 
       [[1, 0], token]
