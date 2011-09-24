@@ -24,6 +24,8 @@ class Lexer
       ["whitespace", new Absin.LexerRules.Whitespace()]
       ["list",       new Absin.LexerRules.Grouper("[", "]", "LIST_OPEN", "LIST_CLOSE")]
       ["group",      new Absin.LexerRules.Grouper()]
+      ["integer",    new Absin.LexerRules.Integer()]
+      ["float",      new Absin.LexerRules.Float()]
       ["string",     new Absin.LexerRules.String()]
       ["regexp",     new Absin.LexerRules.RegExp()]
       ["specials",   new Absin.LexerRules.Specials()]
