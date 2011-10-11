@@ -18,8 +18,26 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-# module "Lexer"
-#
+# simple tokenizer class for testing the lexer itself
+class TokenizeFixed
+  constructor: (@code, @token = "FIXED") ->
+
+  tokenize: (code) ->
+    if code.slice(0, @code.length) == @code
+      [[@code.length, 0], [@token, @code]]
+
+abLexer = -> new Absin.Lexer(rules: [[null, new TokenizeFixed("a")], [null, new TokenizeFixed("b")]])
+
+module "Lexer"
+
+test "walking through lex rules", ->
+  lexer = abLexer()
+  result = lexer.tokenize("aab")
+
+  deepEqual result[0], ["FIXED", "a"]
+  deepEqual result[1], ["FIXED", "a"]
+  deepEqual result[2], ["FIXED", "b"]
+
 # test "general lexing", ->
 #   lexer = new Absin.Lexer()
 #   result = lexer.tokenize('(puts "hello world")')

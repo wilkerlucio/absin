@@ -37,7 +37,23 @@ class Lexer
     @rules = opts.rules || Lexer.defaultRules()
 
   tokenize: (code, opts = {}) ->
-    []
+    tokens = []
+    i = 0
+
+    while i < code.length
+      current = code.slice(i)
+      token = null
+
+      for [name, tokenizer] in @rules
+        break if token = tokenizer.tokenize(current)
+
+      if token
+        i += token[0][0]
+        tokens.push(token[1])
+      else
+        raise "invalid token #{current}"
+
+    tokens
 
 if require?
   module.exports.Lexer = Lexer
