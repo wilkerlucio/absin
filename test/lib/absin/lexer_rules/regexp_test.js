@@ -18,4 +18,7 @@
   test("parsing expression with escapes", function() {
     return deepEqual(r.tokenize('#"(?i)hel\\"lo"'), [[14, 0], ["REGEXP", "/hel\"lo/i"]]);
   });
+  test("offset on multiline", function() {
+    return deepEqual(r.tokenize('#"hel\\nlo"'), [[10, 0], ["REGEXP", "/hel\nlo/"]]);
+  });
 }).call(this);

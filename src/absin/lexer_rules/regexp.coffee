@@ -26,7 +26,7 @@ Absin.LexerRules.RegExp = class RegExp
   tokenize: (code) ->
     if code.match(/^#"/)
       string = @stringTokenizer.tokenize(code.slice(1))
-      string[0][0] += 1 if string[0][1] == 0
+      string[0][0] += 1
       string[1][0] = "REGEXP"
       string[1][1] = @parseRegexp(string[1][1])
       string

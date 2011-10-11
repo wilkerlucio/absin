@@ -37,3 +37,6 @@ test "parsing expression with modifiers", ->
 
 test "parsing expression with escapes", ->
   deepEqual r.tokenize('#"(?i)hel\\"lo"'), [[14, 0], ["REGEXP", "/hel\"lo/i"]]
+
+test "offset on multiline", ->
+  deepEqual r.tokenize('#"hel\\nlo"'), [[10, 0], ["REGEXP", "/hel\nlo/"]]
