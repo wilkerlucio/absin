@@ -29,7 +29,7 @@ class Lexer
       ["float",      new Absin.LexerRules.Float()]
       ["regexp",     new Absin.LexerRules.RegExp()]
       ["string",     new Absin.LexerRules.String()]
-      ["specials",   new Absin.LexerRules.Specials()]
+      ["specials",   new Absin.LexerRules.Special()]
       ["identifier", new Absin.LexerRules.Identifier()]
     ]
 
@@ -49,7 +49,7 @@ class Lexer
 
       if token
         i += token[0][0]
-        tokens.push(token[1])
+        tokens.push(token[1]) if token[1]
       else
         raise "invalid token #{current}"
 

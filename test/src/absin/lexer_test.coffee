@@ -26,13 +26,20 @@ class TokenizeFixed
     if code.slice(0, @code.length) == @code
       [[@code.length, 0], [@token, @code]]
 
-abLexer = -> new Absin.Lexer(rules: [[null, new TokenizeFixed("a")], [null, new TokenizeFixed("b")]])
+class TokenizeFixedNil
+  constructor: (@code, @token = "FIXED") ->
+
+  tokenize: (code) ->
+    if code.slice(0, @code.length) == @code
+      [[@code.length, 0], null]
+
+abLexer = -> new Absin.Lexer(rules: [[null, new TokenizeFixed("a")], [null, new TokenizeFixed("b")], [null, new TokenizeFixedNil("c")]])
 
 module "Lexer"
 
 test "walking through lex rules", ->
   lexer = abLexer()
-  result = lexer.tokenize("aab")
+  result = lexer.tokenize("acab")
 
   deepEqual result[0], ["FIXED", "a"]
   deepEqual result[1], ["FIXED", "a"]
